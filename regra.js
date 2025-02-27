@@ -16,9 +16,13 @@ function calculo(val1, val2) {
   var i = 0;
   while (taxas[i]) {
     
-    let percentual = (taxas[i] * valor) / 100
-    valor_total.push(valor + percentual); //Populando os valores totais
-    valor_parcelas.push((valor + percentual) / (i+1)); //Populando os valores das parcelas
+    let percentual = taxas[i] / 100;
+    
+    let total = valor + (valor * ((valor * percentual) / (valor - (valor * percentual))));
+    
+    valor_total.push(total); // Populando os valores totais
+    valor_parcelas.push(total / (i + 1)); // Populando os valores das parcelas
+
     i++;
   }
 
